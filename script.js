@@ -504,6 +504,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const blessingsForm = document.getElementById('blessings-form');
     const blessingsSuccessMsg = document.getElementById('blessings-success-msg');
 
+    // Automatically display success state if returning after submission (?submitted=true)
+    if (window.location.search.includes('submitted=true')) {
+        if (blessingsForm) blessingsForm.style.display = 'none';
+        if (blessingsSuccessMsg) blessingsSuccessMsg.style.display = 'block';
+    }
+
     if (blessingsForm) {
         blessingsForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -519,7 +525,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = nameInput ? nameInput.value.trim() : '';
             const message = messageInput ? messageInput.value.trim() : '';
 
-            if (!name || !message) return;
+            if (!name || !message) {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>SEND PRIVATE WISHES</span>';
+                }
+                return;
+            }
 
             fetch('https://formsubmit.co/ajax/swapnitharavinandan@gmail.com', {
                 method: 'POST',
@@ -539,13 +551,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(function(data) {
-                blessingsForm.style.display = 'none';
-                if (blessingsSuccessMsg) {
-                    blessingsSuccessMsg.style.display = 'block';
+                if (data.success === 'true' || data.success === true) {
+                    blessingsForm.style.display = 'none';
+                    if (blessingsSuccessMsg) {
+                        blessingsSuccessMsg.style.display = 'block';
+                    }
+                } else {
+                    // Requires 1-time email activation -> submit directly so user can activate
+                    blessingsForm.submit();
                 }
             })
             .catch(function(error) {
-                console.error("FormSubmit error, submitting via standard POST:", error);
+                console.error("AJAX error, falling back to direct submit:", error);
                 blessingsForm.submit();
             });
         });
