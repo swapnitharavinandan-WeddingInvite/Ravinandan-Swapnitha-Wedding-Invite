@@ -409,13 +409,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 counterBadge.innerText = `${currentSlide + 1} / ${totalSlides}`;
             }
 
-            // Update Thumbnails
+            // Update Thumbnails (Scroll ONLY the thumbnail horizontal wrapper, NEVER the main window)
             if (thumbnailsContainer) {
                 const thumbs = thumbnailsContainer.querySelectorAll('.gallery-thumb');
+                const wrapper = thumbnailsContainer.parentElement;
                 thumbs.forEach((t, i) => {
                     if (i === currentSlide) {
                         t.classList.add('active');
-                        t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        if (wrapper) {
+                            const targetLeft = t.offsetLeft - (wrapper.clientWidth / 2) + (t.clientWidth / 2);
+                            wrapper.scrollTo({ left: targetLeft, behavior: 'smooth' });
+                        }
                     } else {
                         t.classList.remove('active');
                     }
@@ -436,8 +440,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Auto-play timer
         function startAutoSlide() {
-            if (!autoSlideInterval) {
-                autoSlideInterval = setInterval(nextSlide, 4200);
+            if (!autoSlideInterval && isGalleryInView) {
+                autoSlideInterval = setInterval(nextSlide, 4500);
             }
         }
 
@@ -459,6 +463,23 @@ document.addEventListener('DOMContentLoaded', () => {
             royalGoldFrame.addEventListener('mouseleave', startAutoSlide);
         }
 
+        // Only auto-play when Gallery is actively visible on user screen
+        let isGalleryInView = false;
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isGalleryInView = entry.isIntersecting;
+                if (isGalleryInView) {
+                    startAutoSlide();
+                } else {
+                    stopAutoSlide();
+                }
+            });
+        }, { threshold: 0.25 });
+
+        if (royalGoldFrame) {
+            galleryObserver.observe(royalGoldFrame);
+        }
+
         // Touch Swipe support
         let touchStartX = 0;
         let touchEndX = 0;
@@ -477,9 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetAutoSlide();
             }
         }, { passive: true });
-
-        // Start auto-play initially
-        startAutoSlide();
     }
 
 });
