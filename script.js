@@ -363,4 +363,124 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     handleScrollReveal();
 
+    // === ROYAL GOLD GALLERY SLIDESHOW ===
+    const slideshowStage = document.getElementById('slideshow-stage');
+    const slides = document.querySelectorAll('.slideshow-slide');
+    const prevBtn = document.getElementById('gallery-prev');
+    const nextBtn = document.getElementById('gallery-next');
+    const counterBadge = document.getElementById('slide-counter');
+    const thumbnailsContainer = document.getElementById('gallery-thumbnails');
+    const royalGoldFrame = document.getElementById('royal-gold-frame');
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let autoSlideInterval = null;
+
+    if (slideshowStage && totalSlides > 0) {
+        // Build filmstrip thumbnails
+        if (thumbnailsContainer) {
+            thumbnailsContainer.innerHTML = '';
+            slides.forEach((slide, idx) => {
+                const img = slide.querySelector('img');
+                if (img) {
+                    const thumb = document.createElement('img');
+                    thumb.src = img.src;
+                    thumb.alt = `Thumbnail ${idx + 1}`;
+                    thumb.className = `gallery-thumb ${idx === 0 ? 'active' : ''}`;
+                    thumb.addEventListener('click', () => {
+                        goToSlide(idx);
+                        resetAutoSlide();
+                    });
+                    thumbnailsContainer.appendChild(thumb);
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+
+            slides[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+
+            // Update Counter
+            if (counterBadge) {
+                counterBadge.innerText = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            // Update Thumbnails
+            if (thumbnailsContainer) {
+                const thumbs = thumbnailsContainer.querySelectorAll('.gallery-thumb');
+                thumbs.forEach((t, i) => {
+                    if (i === currentSlide) {
+                        t.classList.add('active');
+                        t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    } else {
+                        t.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+        if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+
+        // Auto-play timer
+        function startAutoSlide() {
+            if (!autoSlideInterval) {
+                autoSlideInterval = setInterval(nextSlide, 4200);
+            }
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+        }
+
+        function resetAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+
+        // Pause auto-play on hover
+        if (royalGoldFrame) {
+            royalGoldFrame.addEventListener('mouseenter', stopAutoSlide);
+            royalGoldFrame.addEventListener('mouseleave', startAutoSlide);
+        }
+
+        // Touch Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slideshowStage.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slideshowStage.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 40) {
+                nextSlide();
+                resetAutoSlide();
+            } else if (touchEndX - touchStartX > 40) {
+                prevSlide();
+                resetAutoSlide();
+            }
+        }, { passive: true });
+
+        // Start auto-play initially
+        startAutoSlide();
+    }
+
 });
+

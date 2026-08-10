@@ -136,6 +136,7 @@
                     <a href="#hero" class="nav-link">Home</a>
                     <a href="#couple" class="nav-link">Couple</a>
                     <a href="#story" class="nav-link">Timeline</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
                     <a href="#events" class="nav-link">Events</a>
                     <button id="reopen-cover-btn" class="nav-cover-btn" title="View Invitation Cover">📜 Invitation Cover</button>
                 </nav>
@@ -381,6 +382,65 @@
                         <div class="philosophy-image-wrap">
                             <img src="romantic_couple_art.jpg" alt="Our Relationship Philosophy" class="philosophy-img">
                             <div class="philosophy-border-accent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GALLERY & SLIDESHOW ==================== -->
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <div class="section-title-wrapper reveal">
+                    <div class="section-gold-monogram">📷</div>
+                    <h2 class="section-title">Cherished Moments</h2>
+                    <p class="section-subtitle">A glimpse into our beautiful journey together</p>
+                </div>
+
+                <!-- Royal Ornate Gold Framed Slideshow Container -->
+                <div class="royal-gallery-wrapper reveal">
+                    <div class="royal-gold-frame" id="royal-gold-frame">
+                        <!-- Corner Mandalas / Ornate Gold Flourishes -->
+                        <div class="corner-flourish top-left">⚜</div>
+                        <div class="corner-flourish top-right">⚜</div>
+                        <div class="corner-flourish bottom-left">⚜</div>
+                        <div class="corner-flourish bottom-right">⚜</div>
+
+                        <!-- Inner Inset Gold Frame -->
+                        <div class="frame-inner-border"></div>
+
+                        <!-- Slides Container -->
+                        <div class="slideshow-stage" id="slideshow-stage">
+                            <div class="slideshow-slide active"><img src="gallery_images/gallery_1.jpg" alt="Cherished Moment 1" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_2.jpg" alt="Cherished Moment 2" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_3.jpg" alt="Cherished Moment 3" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_4.jpg" alt="Cherished Moment 4" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_5.jpg" alt="Cherished Moment 5" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_6.jpg" alt="Cherished Moment 6" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_7.jpg" alt="Cherished Moment 7" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_8.jpg" alt="Cherished Moment 8" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_9.jpg" alt="Cherished Moment 9" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_10.jpg" alt="Cherished Moment 10" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_11.jpg" alt="Cherished Moment 11" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_12.jpg" alt="Cherished Moment 12" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_13.jpg" alt="Cherished Moment 13" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_14.jpg" alt="Cherished Moment 14" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_15.jpg" alt="Cherished Moment 15" loading="lazy"></div>
+                            <div class="slideshow-slide"><img src="gallery_images/gallery_16.jpg" alt="Cherished Moment 16" loading="lazy"></div>
+                        </div>
+
+                        <!-- Previous / Next Controls -->
+                        <button class="slide-nav-btn prev-btn" id="gallery-prev" aria-label="Previous Slide">❮</button>
+                        <button class="slide-nav-btn next-btn" id="gallery-next" aria-label="Next Slide">❯</button>
+
+                        <!-- Counter Overlay -->
+                        <div class="slide-counter-badge" id="slide-counter">1 / 16</div>
+                    </div>
+
+                    <!-- Thumbnails Navigation Filmstrip -->
+                    <div class="gallery-thumbnails-wrapper">
+                        <div class="gallery-thumbnails" id="gallery-thumbnails">
+                            <!-- Thumbnails populated dynamically via JavaScript -->
                         </div>
                     </div>
                 </div>
