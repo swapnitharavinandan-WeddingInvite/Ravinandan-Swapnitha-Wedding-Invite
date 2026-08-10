@@ -498,6 +498,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetAutoSlide();
             }
         }, { passive: true });
+    }
+
     // === PRIVATE BLESSINGS FORM SUBMISSION TO EMAIL ===
     const blessingsForm = document.getElementById('blessings-form');
     const blessingsSuccessMsg = document.getElementById('blessings-success-msg');
