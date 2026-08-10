@@ -138,6 +138,7 @@
                     <a href="#story" class="nav-link">Timeline</a>
                     <a href="#gallery" class="nav-link">Gallery</a>
                     <a href="#events" class="nav-link">Events</a>
+                    <a href="#blessings" class="nav-link">Blessings</a>
                     <button id="reopen-cover-btn" class="nav-cover-btn" title="View Invitation Cover">📜 Invitation Cover</button>
                 </nav>
                 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation Menu">
@@ -634,6 +635,39 @@
             </div>
         </section>
 
+        <!-- ==================== PRIVATE BLESSINGS & WISHES SECTION ==================== -->
+        <section id="blessings" class="section blessings-section">
+            <div class="container text-center reveal">
+                <p class="blessings-tagline">A NOTE FOR FOREVER</p>
+                <h2 class="blessings-title">Leave your blessings</h2>
+                <p class="blessings-subtitle">Send a private note straight to the family. Your message will never appear on this website.</p>
+
+                <div class="blessings-card">
+                    <form id="blessings-form" class="blessings-form">
+                        <div class="form-group">
+                            <label for="blessings-name" class="blessings-label">YOUR NAME</label>
+                            <input type="text" id="blessings-name" class="blessings-input" placeholder="Your name" required autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blessings-message" class="blessings-label">YOUR MESSAGE</label>
+                            <textarea id="blessings-message" class="blessings-textarea" placeholder="Write your wish for Swapnitha & Ravinandan..." rows="3" required></textarea>
+                        </div>
+
+                        <button type="submit" id="blessings-submit" class="blessings-submit-btn">
+                            <span>SEND PRIVATE WISHES</span>
+                        </button>
+
+                        <p class="blessings-footer-note">Your message will be delivered privately to the family.</p>
+                    </form>
+                    <div id="blessings-success-msg" class="blessings-success-msg" style="display: none;">
+                        <div class="success-icon">💌</div>
+                        <h3>Thank You for Your Loving Blessings!</h3>
+                        <p>Your private wish has been sent to Swapnitha & Ravinandan and family.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- ==================== HOSTS & BLESSINGS SECTION ==================== -->
         <section class="hosts-section">

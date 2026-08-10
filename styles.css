@@ -3424,5 +3424,163 @@ html, body {
     transform: scale(1.08);
 }
 
+/* ==================== PRIVATE BLESSINGS & WISHES SECTION ==================== */
+.blessings-section {
+    position: relative;
+    padding: 100px 0;
+    background: linear-gradient(180deg, #4A2328 0%, #3B1B20 100%);
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.blessings-tagline {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4AF37;
+    margin-bottom: 12px;
+}
+
+.blessings-title {
+    font-family: 'Great Vibes', 'Alex Brush', 'Pinyon Script', 'Cormorant Garamond', cursive, serif;
+    font-size: 3.6rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.blessings-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 580px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.blessings-card {
+    background: #FFFDF8;
+    border-radius: 28px;
+    padding: 48px 44px;
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    text-align: left;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.blessings-form .form-group {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.blessings-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #A38228;
+    margin-bottom: 8px;
+}
+
+.blessings-input,
+.blessings-textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid #E5D8BE;
+    background: transparent;
+    padding: 10px 0 14px 0;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: #2C2519;
+    outline: none;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+    resize: vertical;
+}
+
+.blessings-input:focus,
+.blessings-textarea:focus {
+    border-bottom-color: #C59B27;
+}
+
+.blessings-input::placeholder,
+.blessings-textarea::placeholder {
+    color: #B5A894;
+    font-weight: 300;
+    font-size: 0.98rem;
+}
+
+.blessings-submit-btn {
+    width: 100%;
+    background: #0E3B30;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 35px;
+    padding: 18px 30px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 6px 20px rgba(14, 59, 48, 0.35);
+    margin-top: 15px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.blessings-submit-btn:hover {
+    background: #0B2E25;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(14, 59, 48, 0.5);
+}
+
+.blessings-footer-note {
+    text-align: center;
+    font-size: 0.84rem;
+    color: #7D705C;
+    font-style: italic;
+    margin: 0;
+}
+
+.blessings-success-msg {
+    text-align: center;
+    padding: 30px 10px;
+    color: #2C2519;
+}
+
+.blessings-success-msg .success-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.blessings-success-msg h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: #8C001A;
+    margin-bottom: 10px;
+}
+
+.blessings-success-msg p {
+    font-size: 0.98rem;
+    color: #555555;
+}
+
+@media (max-width: 768px) {
+    .blessings-section { padding: 70px 0; }
+    .blessings-title { font-size: 2.8rem; }
+    .blessings-card { padding: 35px 24px; border-radius: 20px; }
+}
+
+
 
 

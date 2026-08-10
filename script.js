@@ -498,7 +498,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetAutoSlide();
             }
         }, { passive: true });
+    // === PRIVATE BLESSINGS FORM SUBMISSION ===
+    const blessingsForm = document.getElementById('blessings-form');
+    const blessingsSuccessMsg = document.getElementById('blessings-success-msg');
+
+    if (blessingsForm) {
+        blessingsForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('blessings-name').value.trim();
+            const message = document.getElementById('blessings-message').value.trim();
+
+            if (!name || !message) return;
+
+            // Hide form & show sweet thank-you card
+            blessingsForm.style.display = 'none';
+            if (blessingsSuccessMsg) {
+                blessingsSuccessMsg.style.display = 'block';
+            }
+
+            // Trigger WhatsApp pre-filled private message to family
+            const whatsappText = `Hi Swapnitha & Ravinandan! 🌸\n\n*Private Blessing from ${name}:*\n"${message}"`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappText)}`;
+
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1400);
+        });
     }
 
 });
+
 
