@@ -498,31 +498,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetAutoSlide();
             }
         }, { passive: true });
-    // === PRIVATE BLESSINGS FORM SUBMISSION ===
+    // === PRIVATE BLESSINGS FORM SUBMISSION TO EMAIL ===
     const blessingsForm = document.getElementById('blessings-form');
     const blessingsSuccessMsg = document.getElementById('blessings-success-msg');
 
     if (blessingsForm) {
-        blessingsForm.addEventListener('submit', (e) => {
+        blessingsForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('blessings-name').value.trim();
-            const message = document.getElementById('blessings-message').value.trim();
+            
+            const submitBtn = document.getElementById('blessings-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>SENDING YOUR BLESSINGS...</span>';
+            }
+
+            const nameInput = document.getElementById('blessings-name');
+            const messageInput = document.getElementById('blessings-message');
+            const name = nameInput ? nameInput.value.trim() : '';
+            const message = messageInput ? messageInput.value.trim() : '';
 
             if (!name || !message) return;
 
-            // Hide form & show sweet thank-you card
-            blessingsForm.style.display = 'none';
-            if (blessingsSuccessMsg) {
-                blessingsSuccessMsg.style.display = 'block';
-            }
-
-            // Trigger WhatsApp pre-filled private message to family
-            const whatsappText = `Hi Swapnitha & Ravinandan! 🌸\n\n*Private Blessing from ${name}:*\n"${message}"`;
-            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappText)}`;
-
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1400);
+            fetch('https://formsubmit.co/ajax/swapnitharavinandan@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `New Wedding Blessing from ${name}! 💌`,
+                    _template: "table",
+                    _captcha: "false",
+                    "Guest Name": name,
+                    "Blessing Message": message
+                })
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                blessingsForm.style.display = 'none';
+                if (blessingsSuccessMsg) {
+                    blessingsSuccessMsg.style.display = 'block';
+                }
+            })
+            .catch(function(error) {
+                console.error("FormSubmit error, submitting via standard POST:", error);
+                blessingsForm.submit();
+            });
         });
     }
 
