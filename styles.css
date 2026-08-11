@@ -1750,6 +1750,72 @@ img {
     margin-bottom: 14px;
 }
 
+/* Dual Event Split Block for Muhurtham & Reception */
+.dual-event-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(240, 220, 150, 0.15) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 12px;
+    padding: 14px 10px;
+    margin: 14px auto 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dual-event-col {
+    flex: 1;
+    text-align: center;
+    padding: 0 6px;
+}
+
+.dual-event-heading {
+    font-family: var(--font-heading), serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #8C6D15;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+.dual-event-date {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #555555;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+
+.dual-event-time {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.dual-event-divider {
+    width: 1.5px;
+    height: 52px;
+    background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.6), transparent);
+    margin: 0 4px;
+}
+
+.event-venue-heading {
+    font-family: var(--font-heading), serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #8C6D15;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
 .event-info-group {
     margin-bottom: 18px;
     line-height: 1.7;
