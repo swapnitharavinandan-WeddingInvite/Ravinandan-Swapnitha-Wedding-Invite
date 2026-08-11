@@ -1632,6 +1632,24 @@ img {
     box-shadow: 0 8px 22px rgba(43, 87, 34, 0.18);
 }
 
+.dresscode-tab-card.yellow-theme {
+    background: linear-gradient(135deg, #FFFDF0 0%, #FFF4C2 100%);
+    border: 1.5px solid #D4AF37;
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dresscode-tab-card.yellow-theme:hover {
+    box-shadow: 0 8px 22px rgba(212, 175, 55, 0.28);
+}
+
+.dresscode-tab-card.yellow-theme .tab-title {
+    color: #997300;
+}
+
+.dresscode-tab-card.yellow-theme .dresscode-color-title {
+    color: #806000;
+}
+
 .dresscode-tab-header {
     display: flex;
     align-items: center;
